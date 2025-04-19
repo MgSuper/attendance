@@ -1,3 +1,4 @@
+import 'package:cicoattendance/features/auth/domain/entities/user_entity.dart';
 import 'package:cicoattendance/features/auth/domain/usecases/sign_in_usecase.dart';
 import 'package:cicoattendance/features/auth/presentation/providers/auth_provider.dart';
 import 'package:cicoattendance/router/app_router.dart';
@@ -8,7 +9,9 @@ part 'sign_in_controller.g.dart';
 @riverpod
 class SignInController extends _$SignInController {
   @override
-  FutureOr<void> build() {}
+  FutureOr<UserEntity?> build() {
+    return null; // or initial user if needed
+  }
 
   Future<void> signIn(String email, String password) async {
     state = const AsyncLoading();
