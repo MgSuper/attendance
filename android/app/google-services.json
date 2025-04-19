@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "41674407799",
+    "project_id": "checkio-attendance",
+    "storage_bucket": "checkio-attendance.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:41674407799:android:a6934aa0e4ac71853ceb72",
+        "android_client_info": {
+          "package_name": "com.io.cicoattendance.cicoattendance"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBUJ6Ze_uQD0_OVq9L2TqtzFltxa8-PnHQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
