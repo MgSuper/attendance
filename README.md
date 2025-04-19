@@ -40,3 +40,27 @@ lib/
 flutter test                # Unit + Widget tests
 flutter test integration_test  # Integration tests
 ```
+
+📌 Firebase Setup
+Add your Firebase project
+
+Enable Email/Password authentication
+
+Pre-create users via Firebase Console
+
+Place the config files:
+
+android/app/google-services.json
+
+ios/Runner/GoogleService-Info.plist
+
+📈 CI/CD
+GitHub Actions will run:
+
+flutter analyze
+
+flutter test
+
+integration_test
+
+See .github/workflows/flutter_test.yml
