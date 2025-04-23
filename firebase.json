@@ -1,1 +1,57 @@
-{"flutter":{"platforms":{"android":{"default":{"projectId":"checkio-attendance","appId":"1:41674407799:android:a6934aa0e4ac71853ceb72","fileOutput":"android/app/google-services.json"}},"ios":{"default":{"projectId":"checkio-attendance","appId":"1:41674407799:ios:fb1beabd9b3d146f3ceb72","uploadDebugSymbols":false,"fileOutput":"ios/Runner/GoogleService-Info.plist"}},"macos":{"default":{"projectId":"checkio-attendance","appId":"1:41674407799:ios:fb1beabd9b3d146f3ceb72","uploadDebugSymbols":false,"fileOutput":"macos/Runner/GoogleService-Info.plist"}},"dart":{"lib/firebase_options.dart":{"projectId":"checkio-attendance","configurations":{"android":"1:41674407799:android:a6934aa0e4ac71853ceb72","ios":"1:41674407799:ios:fb1beabd9b3d146f3ceb72","macos":"1:41674407799:ios:fb1beabd9b3d146f3ceb72","web":"1:41674407799:web:27b7904e39afee543ceb72","windows":"1:41674407799:web:4e08fdb889eceb4c3ceb72"}}}}}}
+{
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "checkio-attendance",
+          "appId": "1:41674407799:android:a6934aa0e4ac71853ceb72",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "ios": {
+        "default": {
+          "projectId": "checkio-attendance",
+          "appId": "1:41674407799:ios:fb1beabd9b3d146f3ceb72",
+          "uploadDebugSymbols": false,
+          "fileOutput": "ios/Runner/GoogleService-Info.plist"
+        }
+      },
+      "macos": {
+        "default": {
+          "projectId": "checkio-attendance",
+          "appId": "1:41674407799:ios:fb1beabd9b3d146f3ceb72",
+          "uploadDebugSymbols": false,
+          "fileOutput": "macos/Runner/GoogleService-Info.plist"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "checkio-attendance",
+          "configurations": {
+            "android": "1:41674407799:android:a6934aa0e4ac71853ceb72",
+            "ios": "1:41674407799:ios:fb1beabd9b3d146f3ceb72",
+            "macos": "1:41674407799:ios:fb1beabd9b3d146f3ceb72",
+            "web": "1:41674407799:web:27b7904e39afee543ceb72",
+            "windows": "1:41674407799:web:4e08fdb889eceb4c3ceb72"
+          }
+        }
+      }
+    }
+  },
+  "functions": [
+    {
+      "source": "functions",
+      "codebase": "default",
+      "ignore": [
+        "node_modules",
+        ".git",
+        "firebase-debug.log",
+        "firebase-debug.*.log",
+        "*.local"
+      ],
+      "predeploy": [
+        "npm --prefix \"$RESOURCE_DIR\" run lint"
+      ]
+    }
+  ]
+}

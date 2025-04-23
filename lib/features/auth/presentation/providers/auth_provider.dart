@@ -12,3 +12,14 @@ IAuthRepository authRepository(Ref ref) {
   final datasource = AuthRemoteDatasource(FirebaseAuth.instance);
   return AuthRepositoryImpl(datasource);
 }
+
+/// Provides access to FirebaseAuth instance
+final firebaseAuthProvider = Provider<FirebaseAuth>((ref) {
+  return FirebaseAuth.instance;
+});
+
+/// Reactive stream of FirebaseAuth user
+final authStateChangesProvider = StreamProvider<User?>((ref) {
+  final auth = ref.watch(firebaseAuthProvider);
+  return auth.authStateChanges();
+});

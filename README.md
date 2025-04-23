@@ -1,28 +1,47 @@
 # ✅ Check-In/Check-Out Attendance App
 
-This is a Flutter app built using **Riverpod + Clean Architecture**, connected to **Firebase** for authentication and check-in/check-out attendance tracking.
+A modern Flutter app using **Riverpod + Clean Architecture**, connected to **Firebase Auth & Firestore** for employee check-in/check-out tracking, attendance records, and admin controls.
+
+---
 
 ## 🔥 Features
 
-- 📲 Firebase Email/Password sign-in (users are pre-created)
-- 🧠 Clean architecture (domain → data → presentation)
-- 🚀 Routing via `go_router` with auth guards
-- 🎯 State management with `hooks_riverpod` and `@riverpod` codegen
-- 💡 Error handling via `multiple_result`
-- ✅ Fully tested: unit, widget, and integration tests
-- ⚙️ GitHub Actions CI setup
+### 👤 User View
+
+- 📲 Email/password sign-in (accounts pre-created via Firebase Console)
+- 📍 Check-in when within 10m of office location
+- ⏰ Time-based rules (e.g., check-in after 8:30, check-out after 17:00)
+- 📝 Late check-in requires reason input
+- 🗓️ Public holiday + weekend awareness
+- 🧭 Location-aware buttons with loading shimmer and error handling
+- 🧾 View personal attendance history
+
+### 🛠️ Admin View
+
+- 👥 View all users
+- 📅 Tap user to view monthly attendance
+- 📂 Filter logs by month
+- 📤 Export filtered logs to CSV
+- 📊 Summary report (check-ins, absents, late days, total hours)
+- ➕ Add new users (manual UID setup)
+- 🏖 Supports public holiday config
+
+---
 
 ## 📦 Tech Stack
 
 - Flutter 3.19+
-- Firebase Auth & Firestore
-- Riverpod 2.x with `riverpod_generator`
-- GoRouter
-- Shimmer
-- multiple_result
+- Firebase Auth + Firestore
+- Riverpod 2.x (`@riverpod` codegen + `hooks_riverpod`)
+- GoRouter with auth guards
+- MultipleResult for clean error handling
+- Shimmer loading UI
+- CSV export support
 - Clean architecture pattern
 
-## 📁 Folder Structure
+---
+
+## 🧭 Sample Folder Structure
 
 lib/
 ├── core/
@@ -41,26 +60,56 @@ flutter test                # Unit + Widget tests
 flutter test integration_test  # Integration tests
 ```
 
-📌 Firebase Setup
-Add your Firebase project
+🔐 Firebase Setup
+Create Firebase project
 
-Enable Email/Password authentication
+Enable Email/Password Auth
 
-Pre-create users via Firebase Console
+Pre-create users in Firebase Auth
 
-Place the config files:
+Create Firestore collections:
+
+users/{uid} with role & profile info
+
+config/office with check-in rules + location
+
+holidays/{YYYY-MM-DD} for public holidays
+
+Add config files:
 
 android/app/google-services.json
 
 ios/Runner/GoogleService-Info.plist
 
-📈 CI/CD
-GitHub Actions will run:
+⚙️ CI/CD
+Using GitHub Actions:
 
-flutter analyze
+✅ flutter analyze
 
-flutter test
+✅ flutter test
 
-integration_test
+✅ integration_test
 
-See .github/workflows/flutter_test.yml
+Workflow file: .github/workflows/flutter_test.yml
+
+🌗 Theme Support
+🌞 Light
+
+🌙 Dark
+
+🖤 AMOLED Black
+
+User can toggle from Profile Screen.
+
+✨ Extras
+🔒 Role-based routing (user vs admin)
+
+🧠 Reactive auth state w/ Riverpod
+
+🎯 Location + time-based attendance
+
+🛠️ Admin-exportable reports (CSV)
+
+🗓️ Absence excludes holidays + weekends
+
+🪄 Dynamic shimmer placeholder components
