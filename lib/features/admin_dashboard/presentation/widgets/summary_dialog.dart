@@ -16,7 +16,7 @@ void showSummaryDialog(
   showDialog(
     context: context,
     builder: (_) => AlertDialog(
-      title: const Text("Summary"),
+      title: const Text('Summary'),
       content: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -24,28 +24,28 @@ void showSummaryDialog(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text('✅ Check-ins'),
-              Text("$checkIns"),
+              Text('$checkIns'),
             ],
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text('⏳ Check-outs'),
-              Text("$checkOuts"),
+              Text('$checkOuts'),
             ],
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text('🕒 Late entries'),
-              Text("$late"),
+              Text('$late'),
             ],
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text('❌ Absents'),
-              Text("$absents"),
+              Text('$absents'),
             ],
           ),
         ],
@@ -53,7 +53,7 @@ void showSummaryDialog(
       actions: [
         TextButton(
           onPressed: () => Navigator.pop(context),
-          child: const Text("Close"),
+          child: const Text('Close'),
         )
       ],
     ),

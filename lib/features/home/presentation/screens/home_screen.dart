@@ -20,7 +20,7 @@ class HomeScreen extends HookConsumerWidget {
         body: Center(child: CircularProgressIndicator()),
       ),
       error: (e, _) => Scaffold(
-        body: Center(child: Text("Error: $e")),
+        body: Center(child: Text('Error: $e')),
       ),
       data: (user) {
         final isAdmin = user.role == 'admin';

@@ -6,7 +6,7 @@ part of 'admin_attendance_controller.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$userAttendanceHash() => r'df0c973c234fe0a2f0ea3bd9bbbc6a8611bfd78f';
+String _$userAttendanceHash() => r'54a46808f87e01e817bd8f4b68ad5a6ab3d14eed';
 
 /// Copied from Dart SDK
 class _SystemHash {

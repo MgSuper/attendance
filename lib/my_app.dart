@@ -36,7 +36,7 @@ class MyApp extends ConsumerWidget {
           darkTheme: AppTheme.dark,
           themeMode: baseThemeMode,
           builder: (context, child) {
-            return Theme(data: animatedTheme!, child: child!);
+            return Theme(data: animatedTheme, child: child!);
           },
         );
       },

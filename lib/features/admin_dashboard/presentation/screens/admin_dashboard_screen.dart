@@ -20,12 +20,12 @@
 
 //     String _convertLogsToCsv(List<AdminAttendanceLog> logs) {
 //       final buffer = StringBuffer();
-//       buffer.writeln("User ID,Type,Timestamp,Lat,Lng,Distance (m),Reason");
+//       buffer.writeln('User ID,Type,Timestamp,Lat,Lng,Distance (m),Reason');
 
 //       for (final log in logs) {
 //         final date = log.timestamp.toDate().toIso8601String();
 //         buffer.writeln(
-//           '${log.uid},${log.type},$date,${log.lat},${log.lng},${log.distance},${log.reason ?? ""}',
+//           '${log.uid},${log.type},$date,${log.lat},${log.lng},${log.distance},${log.reason ?? ''}',
 //         );
 //       }
 
@@ -110,8 +110,8 @@
 //                       icon: const Icon(Icons.calendar_today),
 //                       label: Text(
 //                         selected.$1 != null
-//                             ? "${selected.$1!.toLocal()}".split(" ")[0]
-//                             : "Filter by Date",
+//                             ? '${selected.$1!.toLocal()}'.split(' ')[0]
+//                             : 'Filter by Date',
 //                       ),
 //                     ),
 //                     const SizedBox(width: 12),
@@ -129,12 +129,12 @@
 //               const SizedBox(height: 8),
 //               ElevatedButton.icon(
 //                 icon: const Icon(Icons.download),
-//                 label: const Text("Export to CSV"),
+//                 label: const Text('Export to CSV'),
 //                 onPressed: () async {
 //                   final logs = ref.read(allAttendanceLogsProvider).value;
 //                   if (logs == null || logs.isEmpty) {
 //                     ScaffoldMessenger.of(context).showSnackBar(
-//                       const SnackBar(content: Text("No data to export")),
+//                       const SnackBar(content: Text('No data to export')),
 //                     );
 //                     return;
 //                   }
@@ -191,10 +191,10 @@ class AdminDashboardScreen extends HookConsumerWidget {
     final usersAsync = ref.watch(allUsersProvider);
 
     return Scaffold(
-      appBar: AppBar(title: const Text("Admin Dashboard")),
+      appBar: AppBar(title: const Text('Admin Dashboard')),
       body: usersAsync.when(
         loading: () => const Center(child: CircularProgressIndicator()),
-        error: (e, _) => Center(child: Text("Error: $e")),
+        error: (e, _) => Center(child: Text('Error: $e')),
         data: (users) => ListView.separated(
           padding: const EdgeInsets.all(16),
           itemCount: users.length,

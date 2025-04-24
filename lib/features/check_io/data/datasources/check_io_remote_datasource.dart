@@ -13,7 +13,7 @@ class CheckIORemoteDatasource {
   Future<CheckIOConfigModel> fetchCheckIOConfig() async {
     print('check id config');
     final doc = await _firestore.collection('config').doc('check_io').get();
-    if (!doc.exists) throw Exception("CheckIO config not found");
+    if (!doc.exists) throw Exception('CheckIO config not found');
 
     return CheckIOConfigModel.fromJson(doc.data()!);
   }
@@ -22,7 +22,7 @@ class CheckIORemoteDatasource {
 
   Future<void> saveAttendanceLog(AttendanceLogModel log) async {
     final user = FirebaseAuth.instance.currentUser;
-    if (user == null) throw Exception("User not logged in");
+    if (user == null) throw Exception('User not logged in');
 
     final docRef = _firestore
         .collection('users')

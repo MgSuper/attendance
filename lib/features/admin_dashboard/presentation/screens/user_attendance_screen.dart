@@ -24,7 +24,7 @@ class UserAttendanceScreen extends HookConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Attendance"),
+        title: const Text('Attendance'),
         actions: [
           if (logsAsync.hasValue)
             IconButton(
@@ -36,7 +36,7 @@ class UserAttendanceScreen extends HookConsumerWidget {
 
                 if (context.mounted) {
                   ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text("✅ Exported to CSV")),
+                    const SnackBar(content: Text('✅ Exported to CSV')),
                   );
                 }
               },
@@ -45,11 +45,11 @@ class UserAttendanceScreen extends HookConsumerWidget {
       ),
       body: holidaysAsync.when(
         loading: () => const Center(child: CircularProgressIndicator()),
-        error: (e, _) => Center(child: Text("Error loading holidays: $e")),
+        error: (e, _) => Center(child: Text('Error loading holidays: $e')),
         data: (holidays) {
           return logsAsync.when(
             loading: () => const Center(child: CircularProgressIndicator()),
-            error: (e, _) => Center(child: Text("Error: $e")),
+            error: (e, _) => Center(child: Text('Error: $e')),
             data: (logs) => Column(
               children: [
                 _MonthPicker(
@@ -76,12 +76,12 @@ class UserAttendanceScreen extends HookConsumerWidget {
                           color: isCheckIn ? Colors.green : Colors.red,
                         ),
                         title: Text(
-                          "${DateFormat.yMMMd().format(dt)} • ${DateFormat.Hm().format(dt)}",
+                          '${DateFormat.yMMMd().format(dt)} • ${DateFormat.Hm().format(dt)}',
                         ),
                         subtitle: Text(
                           isCheckIn
-                              ? "Checked in${log.reason != null ? ' 🕒 Reason: ${log.reason}' : ''}"
-                              : "Checked out",
+                              ? 'Checked in${log.reason != null ? ' 🕒 Reason: ${log.reason}' : ''}'
+                              : 'Checked out',
                         ),
                       );
                     },
@@ -125,7 +125,7 @@ class _MonthPicker extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       child: Row(
         children: [
-          const Text("Month:"),
+          const Text('Month:'),
           const SizedBox(width: 8),
           DropdownButton<DateTime>(
             value: DateTime(selected.year, selected.month),
@@ -138,7 +138,7 @@ class _MonthPicker extends StatelessWidget {
               showSummaryDialog(context, logs, holidays);
             },
             icon: const Icon(Icons.bar_chart),
-            label: const Text("Summary"),
+            label: const Text('Summary'),
           ),
         ],
       ),

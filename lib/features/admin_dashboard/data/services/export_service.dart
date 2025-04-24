@@ -32,13 +32,11 @@ class ExportService {
     final file = File(path);
     await file.writeAsString(csvData);
 
-    print("✅ CSV exported to: $path");
+    print('✅ CSV exported to: $path');
+    await file.writeAsString('name,date,type\nJohn,2025-04-01,check_in');
 
-    // 🔄 Share the file
-    await Share.shareXFiles(
-      [XFile(file.path)],
-      text: '📊 $userName attendance records attached.',
-      subject: '$userName Attendance Logs',
+    SharePlus.instance.share(
+      ShareParams(files: [XFile(file.path)], text: '📄 Attendance Report'),
     );
   }
 }

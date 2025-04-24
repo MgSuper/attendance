@@ -16,18 +16,18 @@ class UserCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(user.name ?? "No Name",
+            Text(user.name ?? 'No Name',
                 style: Theme.of(context).textTheme.titleMedium),
             const SizedBox(height: 4),
             Text(user.email, style: Theme.of(context).textTheme.bodyMedium),
             const SizedBox(height: 8),
             Row(
               children: [
-                _badge("Dept: ${user.department ?? '-'}"),
+                _badge('Dept: ${user.department ?? '-'}'),
                 const SizedBox(width: 8),
-                _badge("Pos: ${user.position ?? '-'}"),
+                _badge('Pos: ${user.position ?? '-'}'),
                 const SizedBox(width: 8),
-                _badge("Role: ${user.role}"),
+                _badge('Role: ${user.role}'),
               ],
             ),
           ],

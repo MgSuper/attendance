@@ -10,7 +10,7 @@ part 'profile_provider.g.dart';
 @riverpod
 Future<UserEntity> userProfile(Ref ref) async {
   final authUser = FirebaseAuth.instance.currentUser;
-  if (authUser == null) throw Exception("No signed-in user");
+  if (authUser == null) throw Exception('No signed-in user');
 
   final repo = ProfileRepositoryImpl(FirebaseFirestore.instance);
   return repo.getUserProfile(authUser.uid);

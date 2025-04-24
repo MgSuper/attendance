@@ -50,7 +50,7 @@ class SignInScreen extends HookConsumerWidget {
               TextField(
                 controller: email,
                 decoration: const InputDecoration(
-                  labelText: "Email",
+                  labelText: 'Email',
                   border: OutlineInputBorder(),
                 ),
               ),
@@ -59,7 +59,7 @@ class SignInScreen extends HookConsumerWidget {
                 controller: password,
                 obscureText: true,
                 decoration: const InputDecoration(
-                  labelText: "Password",
+                  labelText: 'Password',
                   border: OutlineInputBorder(),
                 ),
               ),
@@ -67,7 +67,7 @@ class SignInScreen extends HookConsumerWidget {
 
               if (controller.hasError)
                 Text(
-                  "Error: ${controller.error}",
+                  'Error: ${controller.error}',
                   style: const TextStyle(color: Colors.red),
                 ),
 
@@ -88,7 +88,7 @@ class SignInScreen extends HookConsumerWidget {
                           minimumSize: const Size.fromHeight(50),
                           backgroundColor: Colors.transparent,
                         ),
-                        child: const Text("SIGN IN"),
+                        child: const Text('SIGN IN'),
                       ),
                     ),
             ],

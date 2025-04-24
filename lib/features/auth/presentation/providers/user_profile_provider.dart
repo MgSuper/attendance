@@ -20,7 +20,7 @@ class UserProfile {
 @riverpod
 Future<UserProfile> userProfile(Ref ref) async {
   final uid = FirebaseAuth.instance.currentUser?.uid;
-  if (uid == null) throw Exception("User not signed in");
+  if (uid == null) throw Exception('User not signed in');
 
   final doc =
       await FirebaseFirestore.instance.collection('users').doc(uid).get();

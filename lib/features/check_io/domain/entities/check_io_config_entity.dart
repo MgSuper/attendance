@@ -2,8 +2,8 @@
 class CheckIOConfigEntity {
   final double lat;
   final double lng;
-  final String checkInStart; // "08:30"
-  final String checkOutStart; // "17:00"
+  final String checkInStart; // '08:30'
+  final String checkOutStart; // '17:00'
 
   const CheckIOConfigEntity({
     required this.lat,

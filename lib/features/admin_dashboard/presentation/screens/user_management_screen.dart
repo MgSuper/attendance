@@ -12,7 +12,7 @@ class UserManagementScreen extends ConsumerWidget {
     final usersAsync = ref.watch(userManagementControllerProvider);
 
     return Scaffold(
-      appBar: AppBar(title: const Text("User Management")),
+      appBar: AppBar(title: const Text('User Management')),
       body: usersAsync.when(
         loading: () => const Center(child: CircularProgressIndicator()),
         error: (e, _) => Center(child: Text('Error: $e')),
@@ -39,19 +39,20 @@ class UserManagementScreen extends ConsumerWidget {
     showDialog(
       context: context,
       builder: (_) => AlertDialog(
-        title: const Text("Create New User"),
+        title: const Text('Create New User'),
         content: SingleChildScrollView(
           child: AdminUserForm(
             onSubmit: (data) async {
               final controller =
                   ref.read(userManagementControllerProvider.notifier);
               final result = await controller.createUser(data);
+              if (!context.mounted) return; // ✅ safe check
               Navigator.of(context).pop();
 
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
                   content: Text(
-                      result ? "✅ User created" : "❌ Failed to create user"),
+                      result ? '✅ User created' : '❌ Failed to create user'),
                 ),
               );
             },

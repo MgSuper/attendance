@@ -1,4 +1,3 @@
-import 'package:cicoattendance/features/check_io/domain/entities/check_io_config_entity.dart';
 import 'package:cicoattendance/features/check_io/presentation/controllers/check_io_controller.dart';
 import 'package:cicoattendance/features/check_io/presentation/providers/holidays_provider.dart';
 import 'package:cicoattendance/features/check_io/presentation/widgets/check_buttons.dart';
@@ -50,9 +49,10 @@ class CheckIOScreen extends HookConsumerWidget {
               isWithinRange.value = false;
             }
           } catch (e) {
+            if (!context.mounted) return; // ✅ safe check
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
-                content: const Text("❌ Failed to detect location."),
+                content: const Text('❌ Failed to detect location.'),
                 action: SnackBarAction(
                   label: 'Retry',
                   onPressed: () {
@@ -77,7 +77,7 @@ class CheckIOScreen extends HookConsumerWidget {
           data: (holidays) {
             final today = DateTime.now();
             final todayStr =
-                "${today.year}-${today.month.toString().padLeft(2, '0')}-${today.day.toString().padLeft(2, '0')}";
+                '${today.year}-${today.month.toString().padLeft(2, '0')}-${today.day.toString().padLeft(2, '0')}';
 
             final isWeekend = today.weekday == DateTime.saturday ||
                 today.weekday == DateTime.sunday;
@@ -88,8 +88,8 @@ class CheckIOScreen extends HookConsumerWidget {
               return Center(
                 child: Text(
                   isHoliday
-                      ? "🎉 $holidayName\nWe don't work on holidays."
-                      : "🎉 It's the weekend!\nWe don't work on Saturdays or Sundays.",
+                      ? '🎉 $holidayName\nWe don\'t work on holidays.'
+                      : '🎉 It\'s the weekend!\nWe don\'t work on Saturdays or Sundays.',
                   textAlign: TextAlign.center,
                   style: const TextStyle(
                       fontSize: 18, fontWeight: FontWeight.bold),
@@ -102,7 +102,7 @@ class CheckIOScreen extends HookConsumerWidget {
               child: Column(
                 children: [
                   const Text(
-                    "Check-In / Check-Out",
+                    'Check-In / Check-Out',
                     style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(height: 16),
@@ -121,7 +121,7 @@ class CheckIOScreen extends HookConsumerWidget {
                     ),
                   const SizedBox(height: 16),
                   if (!isWithinRange.value && hasFetchedLocation.value)
-                    const Text("❌ You are not within range (≤ 10m)",
+                    const Text('❌ You are not within range (≤ 10m)',
                         style: TextStyle(color: Colors.red)),
                   const SizedBox(height: 16),
                   if (isWithinRange.value && currentPosition.value != null)

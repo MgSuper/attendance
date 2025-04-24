@@ -14,7 +14,7 @@ class ProfileRepositoryImpl implements IProfileRepository {
   Future<UserEntity> getUserProfile(String uid) async {
     final doc = await firestore.collection('users').doc(uid).get();
     if (!doc.exists) {
-      throw Exception("User profile not found");
+      throw Exception('User profile not found');
     }
 
     final data = doc.data()!;

@@ -6,7 +6,7 @@ part of 'check_io_controller.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$checkIOControllerHash() => r'89bbca7369a5b7a3c45f121c2967448f47b1bcc2';
+String _$checkIOControllerHash() => r'3dbaf6f582c96fe8d5f2e2792c03535fa8f0adeb';
 
 /// See also [CheckIOController].
 @ProviderFor(CheckIOController)
@@ -22,5 +22,22 @@ final checkIOControllerProvider = AutoDisposeAsyncNotifierProvider<
 );
 
 typedef _$CheckIOController = AutoDisposeAsyncNotifier<CheckIOConfigEntity?>;
+String _$todayStatusNotifierHash() =>
+    r'fced004c190520f70e82288c7506774af56a506e';
+
+/// See also [TodayStatusNotifier].
+@ProviderFor(TodayStatusNotifier)
+final todayStatusNotifierProvider =
+    AsyncNotifierProvider<TodayStatusNotifier, TodayStatus>.internal(
+  TodayStatusNotifier.new,
+  name: r'todayStatusNotifierProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$todayStatusNotifierHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef _$TodayStatusNotifier = AsyncNotifier<TodayStatus>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

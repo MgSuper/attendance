@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:cicoattendance/features/profile/domain/entities/user_entity.dart';
 import 'package:cicoattendance/features/profile/data/models/user_model.dart';
@@ -47,7 +46,7 @@ class UserManagementController extends _$UserManagementController {
 
       return true;
     } catch (e) {
-      print("createUser error: $e");
+      print('createUser error: $e');
       return false;
     }
   }

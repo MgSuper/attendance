@@ -8,7 +8,9 @@ import 'package:cicoattendance/features/check_io/presentation/providers/check_io
 import 'package:cicoattendance/features/check_io/presentation/widgets/check_buttons.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:intl/intl.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'check_io_controller.g.dart';
@@ -26,7 +28,7 @@ class CheckIOController extends _$CheckIOController {
       final permission = await Geolocator.requestPermission();
       if (permission == LocationPermission.denied ||
           permission == LocationPermission.deniedForever) {
-        throw Exception("Location permission denied");
+        throw Exception('Location permission denied');
       }
 
       return await Geolocator.getCurrentPosition(
@@ -34,9 +36,9 @@ class CheckIOController extends _$CheckIOController {
             const LocationSettings(accuracy: LocationAccuracy.best),
       );
     } on LocationServiceDisabledException {
-      throw Exception("Location services are disabled.");
+      throw Exception('Location services are disabled.');
     } on Exception catch (e) {
-      throw Exception("Failed to get location: $e");
+      throw Exception('Failed to get location: $e');
     }
   }
 
@@ -52,7 +54,7 @@ class CheckIOController extends _$CheckIOController {
 
   bool isWithinAllowedTime({
     required bool isCheckIn,
-    required String requiredTime, // e.g. "08:30" or "17:00"
+    required String requiredTime, // e.g. '08:30' or '17:00'
   }) {
     final now = DateTime.now();
     final [hour, minute] = requiredTime.split(':').map(int.parse).toList();
@@ -101,6 +103,47 @@ class CheckIOController extends _$CheckIOController {
         .get();
 
     return snapshot.docs.isNotEmpty;
+  }
+
+  Future<TodayStatus> getTodayStatus() async {
+    final uid = FirebaseAuth.instance.currentUser?.uid;
+    if (uid == null) return TodayStatus.none;
+
+    final todayStart = DateTime.now().copyWith(hour: 0, minute: 0, second: 0);
+    final todayEnd = todayStart.add(const Duration(days: 1));
+
+    final logs = await FirebaseFirestore.instance
+        .collection('users')
+        .doc(uid)
+        .collection('attendance_logs')
+        .where('timestamp',
+            isGreaterThanOrEqualTo: Timestamp.fromDate(todayStart))
+        .where('timestamp', isLessThan: Timestamp.fromDate(todayEnd))
+        .get();
+
+    final types = logs.docs.map((doc) => doc.data()['type']).toList();
+
+    if (types.contains('check_out')) return TodayStatus.checkedOut;
+    if (types.contains('check_in')) return TodayStatus.checkedIn;
+    return TodayStatus.none;
+  }
+
+  Future<TodayStatus> checkIOStatus(Ref ref) async {
+    final controller = ref.read(checkIOControllerProvider.notifier);
+    return await controller.getTodayStatus();
+  }
+}
+
+@Riverpod(keepAlive: true)
+class TodayStatusNotifier extends _$TodayStatusNotifier {
+  @override
+  Future<TodayStatus> build() async {
+    return await getTodayStatus(); // same logic you already have
+  }
+
+  Future<void> refresh() async {
+    state = const AsyncLoading(); // to trigger UI update
+    state = AsyncData(await getTodayStatus());
   }
 
   Future<TodayStatus> getTodayStatus() async {

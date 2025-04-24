@@ -15,10 +15,10 @@ class ProfileScreen extends HookConsumerWidget {
 
     return profileAsync.when(
       loading: () => const Center(child: CircularProgressIndicator()),
-      error: (e, _) => Center(child: Text("Error: $e")),
+      error: (e, _) => Center(child: Text('Error: $e')),
       data: (user) {
         return Scaffold(
-          appBar: AppBar(title: const Text("Profile")),
+          appBar: AppBar(title: const Text('Profile')),
           body: ListView(
             padding: const EdgeInsets.all(16),
             children: [
@@ -27,7 +27,7 @@ class ProfileScreen extends HookConsumerWidget {
                   children: [
                     const CircleAvatar(radius: 40, child: Icon(Icons.person)),
                     const SizedBox(height: 12),
-                    Text(user.name ?? "Unknown",
+                    Text(user.name ?? 'Unknown',
                         style: Theme.of(context).textTheme.headlineMedium),
                     Text(user.email,
                         style: Theme.of(context).textTheme.bodyMedium),
@@ -35,15 +35,15 @@ class ProfileScreen extends HookConsumerWidget {
                 ),
               ),
               const SizedBox(height: 24),
-              _tile("Company ID", user.companyId ?? "-"),
-              _tile("Department", user.department ?? "-"),
-              _tile("Position", user.position ?? "-"),
-              _tile("Join Date", user.joinDate ?? "-"),
-              _tile("Role", user.role),
-              _tile("Last Check-In", user.lastCheckIn ?? "-"),
+              _tile('Company ID', user.companyId ?? '-'),
+              _tile('Department', user.department ?? '-'),
+              _tile('Position', user.position ?? '-'),
+              _tile('Join Date', user.joinDate ?? '-'),
+              _tile('Role', user.role),
+              _tile('Last Check-In', user.lastCheckIn ?? '-'),
               const SizedBox(height: 24),
               ListTile(
-                title: const Text("Theme Mode"),
+                title: const Text('Theme Mode'),
                 subtitle: Text(themeMode.name),
                 trailing: const Icon(Icons.brightness_6),
                 onTap: () => themeNotifier.cycle(),
@@ -52,7 +52,7 @@ class ProfileScreen extends HookConsumerWidget {
               ElevatedButton.icon(
                 onPressed: () => FirebaseAuth.instance.signOut(),
                 icon: const Icon(Icons.logout),
-                label: const Text("Logout"),
+                label: const Text('Logout'),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.red,
                   foregroundColor: Colors.white,
