@@ -13,6 +13,8 @@ void showSummaryDialog(
       logs.where((e) => e.type == 'check_in' && e.reason != null).length;
   final absents = await calculateAbsentDays(logs: logs, holidays: holidays);
 
+  if (!context.mounted) return; // ✅ safe check
+
   showDialog(
     context: context,
     builder: (_) => AlertDialog(

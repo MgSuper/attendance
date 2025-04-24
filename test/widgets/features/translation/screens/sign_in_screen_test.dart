@@ -15,8 +15,8 @@ void main() {
     );
 
     expect(find.byType(TextField), findsNWidgets(2));
-    expect(find.text("Email"), findsOneWidget);
-    expect(find.text("Password"), findsOneWidget);
-    expect(find.text("Sign In"), findsOneWidget);
+    expect(find.text('Email'), findsOneWidget);
+    expect(find.text('Password'), findsOneWidget);
+    expect(find.text('Sign In'), findsOneWidget);
   });
 }
