@@ -1,43 +1,74 @@
-# ✅ Check-In/Check-Out Attendance App
+# ✅ Check-In/Check-Out Attendance + Leave Request App
 
-A modern Flutter app using **Riverpod + Clean Architecture**, connected to **Firebase Auth & Firestore** for employee check-in/check-out tracking, attendance records, and admin controls.
-
----
+A complete company attendance management system built with **Flutter + Firebase + Riverpod + Clean Architecture**.
 
 ## 🔥 Features
 
-### 👤 User View
+### 🚪 Authentication
 
-- 📲 Email/password sign-in (accounts pre-created via Firebase Console)
-- 📍 Check-in when within 10m of office location
-- ⏰ Time-based rules (e.g., check-in after 8:30, check-out after 17:00)
-- 📝 Late check-in requires reason input
-- 🗓️ Public holiday + weekend awareness
-- 🧭 Location-aware buttons with loading shimmer and error handling
-- 🧾 View personal attendance history
+- Firebase Email/Password login (users pre-created)
+- Logout button on profile page
+- Fully reactive login flow using Riverpod + GoRouter
 
-### 🛠️ Admin View
+### 🕐 Attendance Management
 
-- 👥 View all users
-- 📅 Tap user to view monthly attendance
-- 📂 Filter logs by month
-- 📤 Export filtered logs to CSV
-- 📊 Summary report (check-ins, absents, late days, total hours)
-- ➕ Add new users (manual UID setup)
-- 🏖 Supports public holiday config
+- Location-based Check-In / Check-Out (within 10 meters)
+- Time-based rules:
+  - Check-In: 8:30 AM - 5:00 PM
+  - Late if after 9:00 AM (reason required)
+  - Check-Out: 5:00 PM - Next Day 8:30 AM
+- Weekend and Public Holidays:
+  - No check-in allowed
+  - Shows 🎉 "We don't work on holidays!"
+- Real-time Check-In/Out button state updates
+- Shimmer loading while fetching location and configs
+
+### 📊 Admin Dashboard
+
+- View all users
+- Tap user to see monthly attendance
+- Monthly filter
+- Export attendance logs to CSV
+- Attendance Summary:
+  - Total Check-Ins
+  - Total Check-Outs
+  - Late Days
+  - Absents
+
+### 👨‍💼 User Management (Admin)
+
+- View all registered users
+- Create new users via Admin Panel
+- Assign user details (company, department, role)
+
+### 📅 Public Holidays
+
+- Firestore collection for holidays
+- Holidays automatically block check-in/check-out
+
+### 📝 Leave Request Management
+
+- Users:
+  - Submit leave request (start date, end date, reason)
+  - See list of their requests (pending, approved, rejected)
+  - Rejected reason visible
+- Admin:
+  - Approve / Reject leave requests
+  - Provide reject reason when rejecting
+- Full history tracking and filtering
 
 ---
 
 ## 📦 Tech Stack
 
 - Flutter 3.19+
-- Firebase Auth + Firestore
-- Riverpod 2.x (`@riverpod` codegen + `hooks_riverpod`)
-- GoRouter with auth guards
-- MultipleResult for clean error handling
-- Shimmer loading UI
-- CSV export support
-- Clean architecture pattern
+- Firebase Auth & Firestore
+- Riverpod 2.x + riverpod_annotation
+- GoRouter
+- Flutter Hooks
+- Shimmer for loading states
+- multiple_result for error handling
+- Clean architecture: `domain → data → presentation`
 
 ---
 
@@ -75,6 +106,8 @@ config/office with check-in rules + location
 
 holidays/{YYYY-MM-DD} for public holidays
 
+leave_requests for leave request and management by admin
+
 Add config files:
 
 android/app/google-services.json
@@ -111,5 +144,7 @@ User can toggle from Profile Screen.
 🛠️ Admin-exportable reports (CSV)
 
 🗓️ Absence excludes holidays + weekends
+
+📝 Leave request by user + approve reject by admin
 
 🪄 Dynamic shimmer placeholder components
