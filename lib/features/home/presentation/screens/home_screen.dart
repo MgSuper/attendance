@@ -1,6 +1,8 @@
 import 'package:cicoattendance/features/admin_dashboard/presentation/screens/admin_dashboard_screen.dart';
 import 'package:cicoattendance/features/attendance_record/presentation/screens/attendance_record_screen.dart';
 import 'package:cicoattendance/features/check_io/presentation/screens/check_io_screen.dart';
+import 'package:cicoattendance/features/leave/presentation/screens/admin_leave_approval_screen.dart';
+import 'package:cicoattendance/features/leave/presentation/screens/user_leave_request_screen.dart';
 import 'package:cicoattendance/features/profile/presentation/screens/profile_screen.dart';
 import 'package:cicoattendance/features/auth/presentation/providers/user_profile_provider.dart';
 import 'package:flutter/material.dart';
@@ -49,6 +51,22 @@ class HomeScreen extends HookConsumerWidget {
               item: const BottomNavigationBarItem(
                 icon: Icon(Icons.admin_panel_settings),
                 label: 'Admin',
+              ),
+            ),
+          if (isAdmin)
+            (
+              widget: const AdminLeaveApprovalScreen(),
+              item: const BottomNavigationBarItem(
+                icon: Icon(Icons.time_to_leave),
+                label: 'Manage Leave',
+              ),
+            ),
+          if (!isAdmin)
+            (
+              widget: const UserLeaveRequestsScreen(),
+              item: const BottomNavigationBarItem(
+                icon: Icon(Icons.time_to_leave),
+                label: 'Leave Request',
               ),
             ),
           (

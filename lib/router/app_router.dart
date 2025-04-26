@@ -1,4 +1,5 @@
 import 'package:cicoattendance/features/admin_dashboard/presentation/screens/user_attendance_screen.dart';
+import 'package:cicoattendance/features/leave/presentation/screens/new_leave_request_screen.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:cicoattendance/features/auth/presentation/providers/auth_provider.dart';
@@ -33,6 +34,10 @@ final goRouterProvider = Provider<GoRouter>((ref) {
           final uid = state.pathParameters['uid']!;
           return UserAttendanceScreen(uid: uid); // 👈 New screen
         },
+      ),
+      GoRoute(
+        path: '/leave/request',
+        builder: (context, state) => const NewLeaveRequestScreen(),
       ),
     ],
   );

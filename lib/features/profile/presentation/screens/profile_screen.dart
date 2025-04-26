@@ -41,10 +41,13 @@ class ProfileScreen extends HookConsumerWidget {
               _tile('Join Date', user.joinDate ?? '-'),
               _tile('Role', user.role),
               _tile('Last Check-In', user.lastCheckIn ?? '-'),
-              const SizedBox(height: 24),
               ListTile(
-                title: const Text('Theme Mode'),
-                subtitle: Text(themeMode.name),
+                contentPadding: EdgeInsets.zero,
+                title: const Text(
+                  'Theme Mode',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+                subtitle: Text(themeMode.name.toUpperCase()),
                 trailing: const Icon(Icons.brightness_6),
                 onTap: () => themeNotifier.cycle(),
               ),
@@ -68,20 +71,12 @@ class ProfileScreen extends HookConsumerWidget {
   Widget _tile(String label, String value) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 16),
-      child: Column(
+      child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(label, style: const TextStyle(fontWeight: FontWeight.bold)),
-          const SizedBox(height: 4),
-          Container(
-            width: double.infinity,
-            padding: const EdgeInsets.all(12),
-            decoration: BoxDecoration(
-              border: Border.all(color: Colors.grey.shade300),
-              borderRadius: BorderRadius.circular(8),
-            ),
-            child: Text(value),
-          ),
+          Text(value),
         ],
       ),
     );

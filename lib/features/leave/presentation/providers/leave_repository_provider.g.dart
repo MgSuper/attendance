@@ -1,27 +1,27 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'user_management_controller.dart';
+part of 'leave_repository_provider.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$userManagementControllerHash() =>
-    r'58c66205abdd9c735b1233f207730fdd62dc37c5';
+String _$leaveRepositoryHash() => r'f4e3b81e601b5c63215cec5b7d8fce46307a929c';
 
-/// See also [UserManagementController].
-@ProviderFor(UserManagementController)
-final userManagementControllerProvider = AutoDisposeAsyncNotifierProvider<
-    UserManagementController, List<UserEntity>>.internal(
-  UserManagementController.new,
-  name: r'userManagementControllerProvider',
+/// See also [leaveRepository].
+@ProviderFor(leaveRepository)
+final leaveRepositoryProvider = AutoDisposeProvider<LeaveRepository>.internal(
+  leaveRepository,
+  name: r'leaveRepositoryProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$userManagementControllerHash,
+      : _$leaveRepositoryHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$UserManagementController = AutoDisposeAsyncNotifier<List<UserEntity>>;
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef LeaveRepositoryRef = AutoDisposeProviderRef<LeaveRepository>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

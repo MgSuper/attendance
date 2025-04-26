@@ -6,7 +6,7 @@ part of 'check_io_controller.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$checkIOControllerHash() => r'3dbaf6f582c96fe8d5f2e2792c03535fa8f0adeb';
+String _$checkIOControllerHash() => r'de1406797470028c81af6215285c6d5a827dbb4f';
 
 /// See also [CheckIOController].
 @ProviderFor(CheckIOController)

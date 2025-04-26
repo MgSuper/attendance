@@ -31,6 +31,7 @@ class MyApp extends ConsumerWidget {
       curve: Curves.easeInOut,
       builder: (context, animatedTheme, _) {
         return MaterialApp.router(
+          debugShowCheckedModeBanner: false,
           routerConfig: router,
           theme: AppTheme.light,
           darkTheme: AppTheme.dark,
